@@ -5,24 +5,26 @@
  */
 package minpakke;
 
+import java.util.ArrayList;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/melding/")
-
+@Path("/sykler/")
 public class SykkelService {
     
-    private static String serverMelding = new String("test");
-
+    private static ArrayList<Sykkel> sykler = new ArrayList<Sykkel>(){{
+      add(new Sykkel("1", "Dragvoll"));  
+    }};
+    
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getMelding() {
-        return serverMelding;
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Sykkel getSykler() {
+        return sykler.get(0);
     }
 
     @POST
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void endreMelding(String nyMelding) {
-        serverMelding = nyMelding;
+//        serverMelding = nyMelding;
     }   
 }

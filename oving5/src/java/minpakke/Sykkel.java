@@ -11,24 +11,35 @@ package minpakke;
  */
 public class Sykkel {
     
-    int nr;
-    boolean ledig = false;
+    String nr;
+    String ledig = "Ledig";
     String plassering;
-    int batteriStatus = 100;
+    String batteriStatus = "100";
 
-    Sykkel(int nr, String plassering){
+    public Sykkel(){
+        
+    }
+    
+    public Sykkel(String nr, String plassering){
         this.nr = nr;
         this.plassering = plassering;
     }
-    
-    public int getBatteriStatus() {
-        return batteriStatus;
+
+    public String getNr() {
+        return nr;
     }
 
-    public void setBatteriStatus(int batteriStatus) {
-        this.batteriStatus = batteriStatus;
+    public void setNr(String nr) {
+        this.nr = nr;
     }
-    
+
+    public String getLedig() {
+        return ledig;
+    }
+
+    public void setLedig(String ledig) {
+        this.ledig = ledig;
+    }
 
     public String getPlassering() {
         return plassering;
@@ -38,20 +49,13 @@ public class Sykkel {
         this.plassering = plassering;
     }
 
-    public int getNr() {
-        return nr;
+    public String getBatteriStatus() {
+        return batteriStatus;
     }
 
-    public void setNr(int nr) {
-        this.nr = nr;
+    public void setBatteriStatus(String batteriStatus) {
+        this.batteriStatus = batteriStatus;
     }
-
-    public boolean isLedig() {
-        return ledig;
-    }
-
-    public void setLedig(boolean ledig) {
-        this.ledig = ledig;
-    }
+    
     
 }
