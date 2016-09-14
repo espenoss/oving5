@@ -15,6 +15,7 @@ public class SykkelService {
     private static ArrayList<Sykkel> sykler = new ArrayList<Sykkel>(){{
       add(new Sykkel("1", "Dragvoll")); 
       add(new Sykkel("2", "Gløshaugen"));
+      add(new Sykkel("3", "Dragvoll"));
     }};
     
     @GET
