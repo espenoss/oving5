@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="http://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
         <title>Elsykkelutleie</title>
         <meta charset="UTF-8">
@@ -10,29 +12,38 @@
 
         <script>
             $(document).ready(function(){
-                // Bind opp tabellen mot rest-ressursen '/kunder'
-                $('#myTable').DataTable( {
-                    ajax: {
+                
+                
+                $('Table').DataTable( {
+                "order": [[ 3, "desc" ]],
+                        ajax: {
                         url: 'rest/sykler',
-                        dataSrc: ''
-                    },                  
+                        dataSrc: '',
+                        
+                    },
                     columns: [
+                        { data: 'parkeringsplass' },
                         { data: 'batteriStatus' },
                         { data: 'ledig' },
-                        { data: 'nr' },
-                        { data: 'plassering' }
+                        { data: 'nr' }
+                        
                     ]
                 });
                 
+                $('Table').DataTable( {
+                    
+                });
                 $("#create").click(function () {
                     $.ajax({
                         url: 'rest/sykler',
                         type: 'POST',
                         data: JSON.stringify({
+                            parkeringsplass: $("#parkeringsplass").val(),
                             batteriStatus: $("#batteriStatus:").val(),
                             ledig: $("#ledig").val(),
                             nr:$("#nr").val(),
-                            plassering:$("#plassering").val()
+                            
+
                             
                         }),
                         contentType: 'application/json; charset=utf-8',
@@ -45,15 +56,30 @@
             });
         </script>
     </head>
+    
+    
     <body>
+        <style>
+        img {
+            display: block;
+            margin: auto;
+            width: 50%;
+            border-radius: 50%;
+        } 
+        h1{
+            position: relative;
+            left: 500px;
+        }
+        </style>
+        <p> <img src="http://assets.inhabitat.com/wp-content/blogs.dir/1/files/2016/02/Faraday-Cortland-electric-bicycle-5.jpg" height="300" width="500"></p>
         <h1>Elsykkelutleie</h1>
         <table id="myTable" class="display compact">
             <thead>
                 
-                <tr><th>Batteristatus</th><th>Ledig</th><th>Nr</th><th>Plassering</th></tr>
+                <tr><th>parkeringsplass</th><th>batteristatus</th><th>Ledig</th><th>Nr</th></tr>
+                
             </thead> 
         </table>
-        
     </body>
 </html>
 
