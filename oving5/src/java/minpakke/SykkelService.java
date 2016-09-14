@@ -13,13 +13,14 @@ import javax.ws.rs.core.MediaType;
 public class SykkelService {
     
     private static ArrayList<Sykkel> sykler = new ArrayList<Sykkel>(){{
-      add(new Sykkel("1", "Dragvoll"));  
+      add(new Sykkel("1", "Dragvoll")); 
+      add(new Sykkel("2", "Gløshaugen"));
     }};
     
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Sykkel getSykler() {
-        return sykler.get(0);
+    public ArrayList<Sykkel> getSykler() {
+        return sykler;
     }
 
     @POST
