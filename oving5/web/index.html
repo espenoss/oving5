@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+        <title>Elsykkelutleie</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            $(document).ready(function(){
+                // Bind opp tabellen mot rest-ressursen '/kunder'
+                $('#myTable').DataTable( {
+                    ajax: {
+                        url: 'rest/sykler',
+                        dataSrc: ''
+                    },                  
+                    columns: [
+                        { data: 'batteriStatus' },
+                        { data: 'ledig' },
+                        { data: 'nr' },
+                        { data: 'plassering' }
+                    ]
+                });
+                
+                $("#create").click(function () {
+                    $.ajax({
+                        url: 'rest/sykler',
+                        type: 'POST',
+                        data: JSON.stringify({
+                            batteriStatus: $("#batteriStatus:").val(),
+                            ledig: $("#ledig").val(),
+                            nr:$("#nr").val(),
+                            plassering:$("#plassering").val()
+                            
+                        }),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(result) {
+                            $('#myTable').DataTable().ajax.reload();
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Elsykkelutleie</h1>
+        <table id="myTable" class="display compact">
+            <thead>
+                
+                <tr><th>Batteristatus</th><th>Ledig</th><th>Nr</th><th>Plassering</th></tr>
+            </thead> 
+        </table>
+        
     </body>
 </html>
+
