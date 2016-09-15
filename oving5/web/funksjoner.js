@@ -38,5 +38,37 @@
                             $('#myTable').DataTable().ajax.reload();
                         }
                     });
+                }); 
+                
+                 $('Table2').DataTable( {
+                
+                        ajax: {
+                        url: 'rest/sykler',
+                        dataSrc: '',
+                        
+                    },
+                    columns: [
+                        { data: 'navn' },
+                        { data: 'email' },
+                        { data: 'plassering' }
+              
+                    ]
+                     });
+                    $("#booking").click(function () {
+                    $.ajax({
+                        url: 'rest/sykler',
+                        type: 'POST',
+                        data: JSON.stringify({
+                            navn: $("#navn").val(),
+                            email: $("#email:").val(),
+                            parkering: $("#parkering").val(),   
+                        }),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(result) {
+                            $('#myTable2').DataTable().ajax.reload();
+                        }
+                    });
                 });
+               
             });
