@@ -5,28 +5,30 @@
  */
 package minpakke;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/sykler/")
 public class SykkelService {
     
-    private static ArrayList<Sykkel> sykler = new ArrayList<Sykkel>(){{
-      add(new Sykkel("1", "Dragvoll")); 
-      add(new Sykkel("2", "Gløshaugen"));
-      add(new Sykkel("3", "Dragvoll"));
+    private static Map<String,Sykkel> sykler = new HashMap(){{
+      put("1", new Sykkel("1", "Dragvoll")); 
+      put("2", new Sykkel("2", "Gløshaugen"));
+      put("3", new Sykkel("3", "Dragvoll"));
     }};
     
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public ArrayList<Sykkel> getSykler() {
-        return sykler;
+    public Collection<Sykkel> getSykler() {
+        return sykler.values();
     }
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public void endreMelding(String nyMelding) {
-//        serverMelding = nyMelding;
-    }   
+    public void leggTilSykkel(){
+        
+    }
 }
