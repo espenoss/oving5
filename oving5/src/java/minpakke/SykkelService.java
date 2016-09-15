@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package minpakke;
 
 import java.util.Collection;
@@ -20,15 +15,40 @@ public class SykkelService {
       put("3", new Sykkel("3", "Dragvoll"));
     }};
     
-    @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Collection<Sykkel> getSykler() {
-        return sykler.values();
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON})
+    public void addSykkel(Sykkel sykkel){
+        sykler.put(sykkel.getNr(), sykkel);
     }
-
+    
     @POST
-    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public void leggTilSykkel(){
-        
+    @Path("/{sykkelNr}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public void endreSykkel(@PathParam("sykkelNr") String sykkelNr, Sykkel sykkel){
+        sykler.replace(sykkelNr, sykkel);
+    }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Collection<Sykkel> getSykler(){
+        return sykler.values();
+    }    
+    
+    @GET
+    @Path("/{sykkelNr}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Sykkel getSykkel(@PathParam("sykkelNr") String sykkelNr) throws NotFoundException{
+        Sykkel sykkel = sykler.get(sykkelNr);
+        if(sykkel == null){
+            throw new NotFoundException(); 
+        }else{
+            return sykkel;
+        }
+    }
+    
+    @DELETE
+    @Path("/{sykkelNr}")
+    public void removeSykkel(@PathParam("sykkelNr") String sykkelNr){
+        sykler.remove(sykkelNr);
     }
 }

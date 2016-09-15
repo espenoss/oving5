@@ -16,10 +16,6 @@ public class Sykkel {
     String plassering;
     String batteriStatus = "100";
 
-    public Sykkel(){
-        
-    }
-    
     public Sykkel(String nr, String plassering){
         this.nr = nr;
         this.plassering = plassering;
@@ -57,5 +53,8 @@ public class Sykkel {
         this.batteriStatus = batteriStatus;
     }
     
+    public Sykkel(){
+        
+    }
     
 }
