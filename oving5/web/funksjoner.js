@@ -5,7 +5,7 @@
                 $('Table').DataTable( {
                 "order": [[ 0, "asc" ]],
                         ajax: {
-                        url: 'rest/sykler',
+                        url: 'rest/sykkelService/sykler',
                         dataSrc: '',
                         
                     },
@@ -21,7 +21,7 @@
                 
                 $("#create").click(function () {
                     $.ajax({
-                        url: 'rest/sykler',
+                        url: 'rest/sykkelService',
                         type: 'POST',
                         data: JSON.stringify({
                             plassering: $("#plassering").val(),
@@ -43,7 +43,7 @@
                  $('Table2').DataTable( {
                 
                         ajax: {
-                        url: 'rest/sykler',
+                        url: 'rest/sykkelService/bestillinger',
                         dataSrc: '',
                         
                     },
@@ -56,7 +56,7 @@
                      });
                     $("#booking").click(function () {
                     $.ajax({
-                        url: 'rest/sykler',
+                        url: 'rest/sykkelService',
                         type: 'POST',
                         data: JSON.stringify({
                             navn: $("#navn").val(),
@@ -70,5 +70,39 @@
                         }
                     });
                 });
-               
+
+
+                $("#reserver").click(function(){
+                    var kunde;
+                    
+                    $.get("rest/sykkelService/kunder/espen", function(data){
+                        alert(data);
+                    });
+                    
+                    alert(kunde);
+                    
+                    var sykkel;
+                        $.get("rest/sykkelService/sykler/Dragvoll", function(data){
+                            sykkel = data;                            
+                        });
+                       
+                    
+                    $.ajax({
+                        url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
+                        type: 'POST',
+                        data: JSON.stringify(sykkel),
+                        contentType: 'application/json',
+                        dataType: 'json'
+                    });
+                    
+                    $.ajax({
+                        url: 'rest/sykkelService/sykler/' + sykkel.nr + '/reserver',
+                        type: 'POST'
+                    });
+                    
+                }
+                    
+                    
+                    
+                );
             });
