@@ -53,6 +53,7 @@ public class Sykkel {
         this.batteriStatus = batteriStatus;
     }
     
+    
     public Sykkel(){
         
     }
