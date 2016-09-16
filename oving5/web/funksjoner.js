@@ -76,30 +76,25 @@
                     var kunde;
                     
                     $.get("rest/sykkelService/kunder/espen", function(data){
-                        alert(data);
-                    });
-                    
-                    alert(kunde);
-                    
-                    var sykkel;
-                        $.get("rest/sykkelService/sykler/Dragvoll", function(data){
-                            sykkel = data;                            
+                            kunde = data;
+                            var sykkel;
+                            $.get("rest/sykkelService/sykler/Dragvoll", function(data){
+                                sykkel = data;
+                                $.ajax({
+                                    url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
+                                    type: 'POST',
+                                    data: JSON.stringify(sykkel),
+                                    contentType: 'application/json',
+                                    dataType: 'json',
+                                    success: function(){
+                                        $.ajax({
+                                             url: 'rest/sykkelService/sykler/' + sykkel.nr + '/reserver',
+                                            type: 'POST'
+                                        });
+                                    }
+                                });
                         });
-                       
-                    
-                    $.ajax({
-                        url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
-                        type: 'POST',
-                        data: JSON.stringify(sykkel),
-                        contentType: 'application/json',
-                        dataType: 'json'
                     });
-                    
-                    $.ajax({
-                        url: 'rest/sykkelService/sykler/' + sykkel.nr + '/reserver',
-                        type: 'POST'
-                    });
-                    
                 }
                     
                     
