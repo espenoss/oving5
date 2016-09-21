@@ -19,17 +19,7 @@ and open the template in the editor.
 <body>
     <form>
         <div>
-            <label for="navn">Navn:</label>
-            <input id="navn" type="text" value="navn">
-        </div>  
-          
-        <div>
-            <label for="dato">Dato</label>
-            <input id="dato" type="date">
-            
-        </div>
-        <div>
-            
+            <p>Gjør bestilling:</p>
             <label for="plassering">Velg parkeringsplass:</label>
                 <select class="selectpicker form-control" id="plassering">
                     <option>Dragvoll</option>
@@ -45,8 +35,10 @@ and open the template in the editor.
         </div>
         
         <div>
-            <button type="button" id="reserver2">Book</button>
+            <button type="button" id="reserver">Book</button>
         </div>
+        
+        <p>Registrer ny sykkel:</p>
         
         <label for="registrerSykkel">Velg parkeringsplass:</label>
          <select class="selectpicker form-control" id="sykkelPlassering">
@@ -59,12 +51,47 @@ and open the template in the editor.
         <div>
             <button type="button" id="registrerSykkel">Registrer ny sykkel</button>
         </div>
-                
+        
+        <p>Registrer ny bruker:</p>
+        <div>
+            <input type="text" id="nyBrukerNavn" value="brukernavn">
+            <input type="text" id="nyBrukerEpost" value="epost">
+        </div>
+
+        <div>
+            <button id="registrerBruker">Registrer bruker</button>            
+        </div>
+        
+        <p>Hent sykkel:</p>
+        <div>
+            <input type="text" id="hentSykkelNr" value="nummer">
+            <input type="text" id="henteKode" value="henteKode">
+        </div>
+        <div>
+            <button type="button" id="hentSykkel">Hent sykkel</button>
+        </div>
+
+        <p>Lever sykkel:</p>
+        <div>
+            <input type="text" id="leverSykkelNr" value="nummer">
+            <select class="selectpicker form-control" id="leverSykkelPlassering">
+                <option>Dragvoll</option>
+                <option>Kalvskinnet</option>
+                <option>Midtbyen</option>
+                <option>Gløshaugen</option>
+            </select>
+        </div>
+        <div>
+            <button type="button" id="leverSykkel">Lever sykkel</button>
+        </div>
+        
     </form>
-     
-    <table class="table" id="Table">
+    <div>
+        <br>
+    <table class="table" id="sykkelTable">
         <thead>
             <tr>
+                <th>Nummer</th>
                 <th>Plassering</th>
                 <th>Batteristatus</th>
                 <th>Ledig</th>
@@ -89,7 +116,7 @@ and open the template in the editor.
              </tr>
         </thead>
     </table>
-    
+    </div>
     </body>
 </html>
 
