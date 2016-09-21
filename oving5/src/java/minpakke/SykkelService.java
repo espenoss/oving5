@@ -16,9 +16,12 @@ public class SykkelService {
      
   
    @PUT
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void addSykkel(Sykkel sykkel){
-        sykler.add(sykkel);
+    @Consumes({MediaType.TEXT_PLAIN})
+    public void addSykkel(String plassering){
+        int sisteNummer = Integer.parseInt(sykler.get(sykler.size()-1).getNr()); // Hent siste nummer
+        String nyttNr = Integer.toString(++sisteNummer).toString();              // inkrementer med en og konverter til string
+        Sykkel nySykkel= new Sykkel(nyttNr, plassering);
+        sykler.add(nySykkel);
     }
     
     @POST

@@ -14,6 +14,19 @@ public class KundeService{
        add(new Kunde("maria", "@hotmail.ru"));
     }};
     
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.TEXT_PLAIN})
+    public String leggTilKunde(String[] brukerInfo){
+        for(Kunde k: kunder){
+            if(k.getBrukerNavn().equals(brukerInfo[0])){
+                return "Brukernavn eksisterer allerede";
+            }
+        }
+        kunder.add(new Kunde(brukerInfo[0], brukerInfo[1]));
+        return "Kunde registrert";
+    }
+    
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public ArrayList<Kunde> getKunder(){
