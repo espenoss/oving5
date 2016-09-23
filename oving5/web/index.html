@@ -1,106 +1,159 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Elsykkelutleie</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Book en sykkel</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"> 
+    <script src="funksjoner.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="newcss1.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+</head>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script src="funksjoner.js" type="text/javascript"></script>
-
-        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    </head>
-    <body>
-        <h1 style="text-align: center">Elsykkelutleie</h1>
-        <!--<p> <img src="sykkel.jpg" height="300" width="500"></p>-->
-        <div class="container">    
-            <ul class="nav nav-tabs" id="myTab">
-                <li><a data-target="#booking" data-toggle="tab">Book en sykkel</a></li>
-                <li><a data-target="#tilgjengelige" data-toggle="tab">Tilgjengelige sykler</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="panel">
-                    <div class="panel panel-default"> </div>
-                </div>
-                <div class="tab-pane" id="booking">
-                    <form class="form-horizontal" method="post">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="navn">Navn</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="navn" placeholder="Skriv inn navn">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="email">Epost:</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="email" placeholder="Skriv inn epost">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="parkering">Parkeringsplass:</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="parkering" name="select">
-                                    <option>Dragvoll</option>
-                                    <option>Gløshaugen</option>
-                                    <option>Kalvskinnet</option>
-                                    <option>Midtbyen</option>
-                                    <option>Gløshaugen</option>
-                                </select>
-                            </div>
-                        </div>    
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-6">
-                                <button type="submit" id="booking" class="btn btn-default">Book</button>
-                            </div>
+<body >
+    
+    <h3 style="text-align: center">Sykkelutleie</h3>
+    <img src="sykkel.jpg" class="img-circle img-responsive center-block" alt="sykkel" style="width:400px;height:250px;">
+    
+    <div class="container">
+        
+        <ul class="nav nav-tabs" id="myTab">
+          <li class="active"><a data-target="#registrerSykkelTab" data-toggle="tab">Registrer ny sykkel</a></li>
+          <li><a data-target="#sykkelTableTab" data-toggle="tab">Tilgjengelige sykler</a></li>
+          <li><a data-target="#registrerBrukerTab" data-toggle="tab">Registrer ny bruker</a></li>
+          <li><a data-target="#kundeTableTab" data-toggle="tab">Bruker table</a></li>
+          <li><a data-target="#bestillingTab" data-toggle="tab">Gjør bestilling</a></li>
+          <li><a data-target="#hentSykkelTab" data-toggle="tab">Hent sykkel</a></li>
+          <li><a data-target="#leverSykkelTab" data-toggle="tab">Lever sykkel</a></li>
+          <li><a data-target="#bestillingTableTab" data-toggle="tab">Bestillinger</a></li>
+        </ul>
+        
+        <div class="tab-content">
+            
+            <div class="tab-pane active" id="registrerSykkelTab">
+                <div class="panel panel-default">
+                    <form>
+                        <p>Registrer ny sykkel:</p>
+                        <label for="registrerSykkel">Velg parkeringsplass:</label>
+                            <select id="sykkelPlassering">
+                                <option>Dragvoll</option>
+                                <option>Kalvskinnet</option>
+                                <option>Midtbyen</option>
+                                <option>Gløshaugen</option>
+                            </select>
+                        <div>
+                            <button type="button" id="registrerSykkel">Registrer ny sykkel</button>
                         </div>
                     </form>
-                </div>  
-                <div class="tab-pane" id="tilgjengelige">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="parkering">Parkeringsplass:</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" id="parkering" name="select">
-                                        <option>Dragvoll</option>
-                                        <option>Gløshaugen</option>
-                                        <option>Kalvskinnet</option>
-                                        <option>Midtbyen</option>
-                                        <option>Gløshaugen</option>
-                                    </select>
-                                </div>
-                        </div> 
-                        
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-6">
-                                <button type="submit" id="tilgjengelige" class="btn btn-default">Vis tilgjengelige sykler</button>
-                            </div>
-                        </div>
-                    </form>
-                    <table class="table" id="myTable">
-                        <thead>
-                            <tr>
-                                <th>Plassering</th>
-                                <th>Bateristatus</th>
-                                <th>Ledig</th>
-                                <th>Nummer</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <table class="table" id="myTable2">
-                        <thead>
-                            <tr>
-                                <th>Navn</th>
-                                <th>Email</th>
-                                <th>Parkering</th>
-                            </tr>
-                        </thead>
-                    </table>
                 </div>
             </div>
+
+            <div class="tab-pane" id="sykkelTableTab">
+                <table id="sykkelTable">
+                    <thead>
+                        <tr>
+                            <th>Nummer</th>
+                            <th>Plassering</th>
+                            <th>Batteristatus</th>
+                            <th>Ledig</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            
+            <div class="tab-pane" id="registrerBrukerTab">
+                <p>Registrer ny bruker:</p>
+                <div>
+                    <input type="text" id="nyBrukerNavn" value="brukernavn">
+                    <input type="text" id="nyBrukerEpost" value="epost">
+                </div>
+                <div>
+                    <button id="registrerBruker">Registrer bruker</button>            
+                </div>
+            </div>
+
+            <div class="tab-pane" id="kundeTableTab">
+                <table id="kundeTable">
+                    <thead>
+                        <tr>
+                            <th>Navn</th>
+                            <th>Epost</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            
+            <div class="tab-pane" id="bestillingTab">
+                <p>Gjør bestilling:</p>
+                <label for="plassering">Velg parkeringsplass:</label>
+                    <select id="plassering">
+                        <option>Dragvoll</option>
+                        <option>Kalvskinnet</option>
+                        <option>Midtbyen</option>
+                        <option>Gløshaugen</option>
+                    </select>
+                <div>
+                    <label for="brukerNavn">Brukernavn:</label>
+                    <input type="text" id="brukerNavn">
+                </div>
+                <div>
+                    <button type="button" id="reserver">Book</button>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="bestillingTableTab">
+                <table id="bestillingTable">
+                    <thead>
+                        <tr>
+                            <th>Dato</th>
+                            <th>Kode</th>
+                         </tr>
+                    </thead>
+                </table>
+            </div>
+            
+            <div class="tab-pane" id="hentSykkelTab">
+                <p>Hent sykkel:</p>
+                <div>
+                    <input type="text" id="hentSykkelNr" value="nummer">
+                    <input type="text" id="henteKode" value="henteKode">
+                </div>
+                <div>
+                    <button type="button" id="hentSykkel">Hent sykkel</button>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="leverSykkelTab">
+                <p>Lever sykkel:</p>
+                <div>
+                    <input type="text" id="leverSykkelNr" value="nummer">
+                    <select id="leverSykkelPlassering">
+                        <option>Dragvoll</option>
+                        <option>Kalvskinnet</option>
+                        <option>Midtbyen</option>
+                        <option>Gløshaugen</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" id="leverSykkel">Lever sykkel</button>
+                </div>
+            </div>
+            
         </div>
-        </body>
-    </html>
+    </div>
+</body>
+</html>
+
+
 
