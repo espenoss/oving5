@@ -70,7 +70,7 @@
                                             type: 'POST',
                                             success: function(){
                                                 $('#sykkelTable').DataTable().ajax.reload();
-                                                $('bestillingTable').DataTable().ajax.reload();
+                                                $('#bestillingTable').DataTable().ajax.reload();
                                             }
                                         });
                                     }
