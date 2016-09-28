@@ -37,13 +37,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         
-                        <li><a data-target="#registrerSykkelTab" data-toggle="tab">Registrer ny sykkel</a></li>
+                        
                         <li><a data-target="#sykkelTableTab" data-toggle="tab">Tilgjengelige sykler</a></li>
-                        <li><a data-target="#registrerBrukerTab" data-toggle="tab">Registrer ny bruker</a></li>
-                        <li><a data-target="#kundeTableTab" data-toggle="tab">Bruker table</a></li>
                         <li><a data-target="#bestillingTab" data-toggle="tab">Gjør bestilling</a></li>
-                        <li><a data-target="#hentSykkelTab" data-toggle="tab">Hent sykkel</a></li>
-                        <li><a data-target="#leverSykkelTab" data-toggle="tab">Lever sykkel</a></li>
                         <li><a data-target="#bestillingTableTab" data-toggle="tab">Bestillinger</a></li>
                     </ul>
                 </div>
@@ -53,23 +49,6 @@
 
             <div class="tab-content">
                 
-                <div class="tab-pane" id="registrerSykkelTab">
-                    <div class="panel panel-default">
-                        <form style="background-color:#E6E6FA">
-                            <p>Registrer ny sykkel:</p>
-                            <label for="registrerSykkel">Velg parkeringsplass:</label>
-                                <select id="sykkelPlassering">
-                                    <option>Dragvoll</option>
-                                    <option>Kalvskinnet</option>
-                                    <option>Midtbyen</option>
-                                    <option>Gløshaugen</option>
-                                </select>
-                            <div>
-                                <button type="button" id="registrerSykkel">Registrer ny sykkel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
                 <div class="tab-pane" id="sykkelTableTab">
                     <table id="sykkelTable">
@@ -84,30 +63,9 @@
                     </table>
                 </div>
 
-                <div class="tab-pane" id="registrerBrukerTab">
-                    <p>Registrer ny bruker:</p>
-                    <div>
-                        <input type="text" id="nyBrukerNavn" value="brukernavn">
-                        <input type="text" id="nyBrukerEpost" value="epost">
-                    </div>
-                    <div>
-                        <button id="registrerBruker">Registrer bruker</button>            
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="kundeTableTab">
-                    <table id="kundeTable">
-                        <thead>
-                            <tr>
-                                <th>Navn</th>
-                                <th>Epost</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-
+               
                 <div class="tab-pane" id="bestillingTab">
-                    <p style="text-align: center">Gjør bestilling:</p>
+                    <p>Gjør bestilling:</p>
                     <label for="plassering">Velg parkeringsplass:</label>
                         <select id="plassering">
                             <option>Dragvoll</option>
@@ -135,35 +93,9 @@
                     </table>
                 </div>
 
-                <div class="tab-pane" id="hentSykkelTab">
-                    <p>Hent sykkel:</p>
-                    <div>
-                        <input type="text" id="hentSykkelNr" value="nummer">
-                        <input type="text" id="henteKode" value="henteKode">
-                    </div>
-                    <div>
-                        <button type="button" id="hentSykkel">Hent sykkel</button>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="leverSykkelTab">
-                    <p>Lever sykkel:</p>
-                    <div>
-                        <input type="text" id="leverSykkelNr" value="nummer">
-                        <select id="leverSykkelPlassering">
-                            <option>Dragvoll</option>
-                            <option>Kalvskinnet</option>
-                            <option>Midtbyen</option>
-                            <option>Gløshaugen</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button type="button" id="leverSykkel">Lever sykkel</button>
-                    </div>
-                </div>
-
             </div>
         </div>
     </body>
 </html>
+
 

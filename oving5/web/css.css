@@ -1,0 +1,47 @@
+body.my_body{
+    background-color: white;
+    
+}
+h1{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+img{
+    width:400px;
+    height:250px;
+}
+nav{
+    background-color:#E6E6FA;
+}
+p{
+    font-size:large;
+    text-align: center;
+    
+}
+#bestillingTab{
+    text-align: center;
+}
+#reserver{
+    text-align: center;
+}
+
+.div_bestilling{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+}
+.div_bestillingTable{
+    margin-top: 25px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+}
+.div_sykkelTable{
+    margin-top: 20px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+}
