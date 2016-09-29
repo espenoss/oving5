@@ -18,6 +18,7 @@ public class Bestilling {
 
     public Bestilling(String dato, String tid, String kode, Sykkel sykkel) {
         this.dato = dato;
+        this.tid=tid;
         this.kode = kode;
         this.sykkel = sykkel;
     }
