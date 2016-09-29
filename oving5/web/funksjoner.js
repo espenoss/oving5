@@ -4,6 +4,9 @@
                 
                 $('#sykkelTable').DataTable( {
                 "order": [[ 1, "asc" ]],
+                        searching: false,
+                        paging: false,
+                        info:  false,
                         ajax: {
                         url: 'rest/sykkelService/sykler',
                         dataSrc: '',
@@ -34,6 +37,9 @@
                 
                 $("#bestillingTable").DataTable({
                 "order": [[ 0, "asc" ]],
+                        searching: false,
+                        paging: false,
+                        info:  false,
                         ajax: {
                         url: 'rest/sykkelService/kunder/espen/bestillinger',
                         dataSrc: '',
@@ -50,7 +56,7 @@
 
                 
                 $("#reserver").click(function(){
-                    brukerNavn = $("#brukerNavn").val();
+                    brukerNavn = "espen";
                     plassering = $("#plassering").val();
                     
                     $.get("rest/sykkelService/kunder/" + brukerNavn, function(data){            
@@ -58,6 +64,7 @@
                             var sykkel;
                             $.get("rest/sykkelService/sykler/" + plassering, function(data){
                                 sykkel = data;
+                                
                                 $.ajax({
                                     url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
                                     type: 'POST',
