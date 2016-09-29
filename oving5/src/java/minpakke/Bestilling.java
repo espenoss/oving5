@@ -12,10 +12,11 @@ package minpakke;
 public class Bestilling {
     
     String dato;
+    String tid; 
     String kode;
     Sykkel sykkel;
 
-    public Bestilling(String dato, String kode, Sykkel sykkel) {
+    public Bestilling(String dato, String tid, String kode, Sykkel sykkel) {
         this.dato = dato;
         this.kode = kode;
         this.sykkel = sykkel;
@@ -44,7 +45,15 @@ public class Bestilling {
     public void setSykkel(Sykkel sykkel) {
         this.sykkel = sykkel;
     }
-   
+
+    public String getTid() {
+        return tid;
+    }
+
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
+    
     public Bestilling(){
         
     }

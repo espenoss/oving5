@@ -4,14 +4,29 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.time.LocalTime;
+import java.time.LocalDate;
 
 @Path("/sykkelService/")
 public class SykkelService {
     
     
+    private static ArrayList<String> plasser = new ArrayList<String>(){{
+       add("Midtbyen");
+       add("Kalvskinnet");
+       add("Gløshaugen");
+       add("Dragvoll");
+    }};
+    
     private static ArrayList<Sykkel> sykler = new ArrayList<Sykkel>(){{
         add(new Sykkel("1", "Dragvoll"));
-        add(new Sykkel("2", "Gløshaugen"));
+        add(new Sykkel("2", "Dragvoll"));
+        add(new Sykkel("3", "Gløshaugen"));
+        add(new Sykkel("4", "Gløshaugen"));
+        add(new Sykkel("5", "Kalvskinnet"));
+        add(new Sykkel("6", "Kalvskinnet"));
+        add(new Sykkel("7", "Midtbyen"));
+        add(new Sykkel("8", "Midtbyen"));        
     }};
     
     private static ArrayList<Kunde> kunder = new ArrayList<Kunde>(){{
@@ -19,6 +34,13 @@ public class SykkelService {
        add(new Kunde("maria", "@hotmail.ru"));
     }};
   
+    @GET
+    @Path("/plasser/")
+    @Produces({MediaType.APPLICATION_JSON})
+    public ArrayList<String> getPlasser(){
+        return plasser;
+    }
+        
     @PUT
     @Path("/kunder/")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -73,9 +95,12 @@ public class SykkelService {
         int kode = new Random().nextInt(1000);
         String kodeString = Integer.toString(kode);
         
-        String dato = new java.util.Date().toString();
+        LocalTime tidL = LocalTime.now();
+        String tid = tidL.getHour() + ":" + tidL.getMinute();
+        LocalDate dateL = LocalDate.now();
+        String dato = dateL.getDayOfMonth() + "." + dateL.getMonthValue();
 
-        kunde.getBestillinger().add(new Bestilling(dato, kodeString, sykkel));
+        kunde.getBestillinger().add(new Bestilling(dato, tid, kodeString, sykkel));
         
         return kodeString;
     }

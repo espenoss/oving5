@@ -47,6 +47,7 @@
                     },
                     columns: [
                         { data: 'dato' },
+                        { data: 'tid'},
                         { data: 'kode' }
                         
                     ]
