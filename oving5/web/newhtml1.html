@@ -1,8 +1,14 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Book en sykkel</title>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <meta charset="utf-8">
@@ -15,12 +21,24 @@
         <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"> 
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    </head>
+    <title>Round About - Start Bootstrap Template</title>
 
-    <body class="my_body">
-        <h1>Velcommen til Sykkelutleie</h1>
-        <h3>Vi har alt du trenger for en fantastisk sykkel opplevelse</h3>
-        
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/round-about.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+ <body class="my_body">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,7 +54,6 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a data-target="#infoTab"  data-toggle="tab" class="tab-pane fade in active">Instruksjoner</a></li>
-                        <li><a data-target="#bestillingTab" data-toggle="tab">Gjør bestilling</a></li>
                         <li><a data-target="#bestillingTableTab" data-toggle="tab">Dine bestillinger</a></li>
                     </ul>
                 </div>
@@ -44,7 +61,6 @@
         </nav>
         <div class="container">
             <div class="tab-content">
-                
                 <div class="tab-pane" id="infoTab">
                     <p> Hvordan leie en sykkel:</p>
                     <p>1.gå til "Gjør bestilling" se oversikt over ledige sykler</p>
@@ -54,20 +70,7 @@
                     <p>5.når du henter sykkelen, bruker du hentekoden</p>
                     <p>6.du kan levere sykkelen hvor det passer deg </p>    
                 </div>
-                <div class="tab-pane" id="bestillingTab">
-                    <div class="div_bestilling">
-                        <p>Gjør bestilling:</p>
-                        <label for="plassering">Velg parkeringsplass:</label>
-                            <select id="plassering">
-                                <option>Dragvoll</option>
-                                <option>Kalvskinnet</option>
-                                <option>Midtbyen</option>
-                                <option>Gløshaugen</option>
-                            </select>
-                        <div>
-                            <button type="button" id="reserver">Book</button>
-                        </div> 
-                    </div>   
+                <div class="tab-pane" id="bestillingTab"> 
                     <div class="tab-pane" id="sykkelTableTab">
                         <div class="div_sykkelTable">
                             <p>Tilgjengelige sykler</p>
@@ -96,12 +99,51 @@
                         </thead>
                     </table>
                 </div>
-                
-                
-                
-            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">Gjør bestilling</h2>
+                        <h6>Trykk på bildet og finn henteplassen</h6>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <h3>Dragvoll</h3>
+                        <a href="https://www.google.no/maps/place/Dragvoll,+7048+Trondheim/@63.4102386,10.4601282,15z/data=!3m1!4b1!4m5!3m4!1s0x466d3038077540a7:0x6e3ef6b8ff205f09!8m2!3d63.4102393!4d10.468883?hl=en">
+                            <img class="img-circle img-responsive" src="dragvoll-3.jpg" alt=""></a>
+                        <div>
+                            <button type="button" id="reserver">Book</button>
+                        </div> 
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <h3>Kalvskinnet</h3>
+                        <a href="https://www.google.no/maps/place/Kalvskinnet/@63.430228,10.3776143,17z/data=!3m1!4b1!4m5!3m4!1s0x466d3185de730bb9:0xcdf1daba692fe6d0!8m2!3d63.430228!4d10.379803?hl=en">
+                            <img class="img-circle img-responsive" src="Kalvskinnet.jpg" alt=""></a>
+                        <div>
+                            <button type="button" id="reserver">Book</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <h3>Midtbyen</h3>
+                        <a href="https://www.google.no/maps/place/Midtbyen+Management/@63.4324972,10.395581,17z/data=!3m1!4b1!4m5!3m4!1s0x466d319bb9d3dcdd:0x65279d308304795b!8m2!3d63.4324972!4d10.3977697?hl=en">
+                            <img class="img-circle img-responsive" src="midtbyen.jpg" alt=""></a>
+                        <div>
+                            <button type="button" id="reserver">Book</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <h3>Gløshaugen</h3>
+                        <a href="https://www.google.no/maps/place/NTNU+-+Norwegian+University+of+Science+and+Technology/@63.414968,10.3913896,15z/data=!4m8!1m2!2m1!1sgl%C3%B8shaugen+trondheim!3m4!1s0x466d31bfd8c0937f:0xb4fde91ca281978b!8m2!3d63.419499!4d10.402077?hl=en">
+                            <img class="img-circle img-responsive" src="Gløshaugen.jpg" alt=""></a>
+                        <div>
+                            <button type="button" id="reserver">Book</button>
+                        </div>
+                    </div>     
+                 </div>
+             </div>    
         </div>
+      
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
     </body>
+
 </html>
-
-

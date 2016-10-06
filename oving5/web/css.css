@@ -5,7 +5,13 @@ body.my_body{
 h1{
     text-align: center;
 }
+h2{
+    text-align: center;
+}
 h3{
+    text-align: center;
+}
+h6{
     text-align: center;
 }
 img{
@@ -25,6 +31,7 @@ p{
 }
 #reserver{
     text-align: center;
+    font-size: 24px;
 }
 
 .div_bestilling{
