@@ -36,7 +36,7 @@
                 });                
                 
                 $("#bestillingTable").DataTable({
-                "order": [[ 0, "asc" ]],
+                        order: [[ 0, "asc" ]],
                         searching: false,
                         paging: false,
                         info:  false,
@@ -53,38 +53,20 @@
                     ]
                 });                
                 
-           
+                $("#dragvoll").click(function(){
+                    fakeReserver("Dragvoll");
+                });
 
-                
-                $("#reserver").click(function(){
-                    brukerNavn = "espen";
-                    plassering = $("#plassering").val();
-                    
-                    $.get("rest/sykkelService/kunder/" + brukerNavn, function(data){            
-                            kunde = data;
-                            var sykkel;
-                            $.get("rest/sykkelService/sykler/" + plassering, function(data){
-                                sykkel = data;
+                $("#gløshaugen").click(function(){
+                    fakeReserver("Gløshaugen");
+                });
                                 
-                                $.ajax({
-                                    url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
-                                    type: 'POST',
-                                    data: JSON.stringify(sykkel),
-                                    contentType: 'application/json',
-                                    dataType: 'json',
-                                    success: function(){
-                                        $.ajax({
-                                             url: 'rest/sykkelService/sykler/' + sykkel.nr + '/reserver',
-                                            type: 'POST',
-                                            success: function(){
-                                                $('#sykkelTable').DataTable().ajax.reload();
-                                                $('#bestillingTable').DataTable().ajax.reload();
-                                            }
-                                        });
-                                    }
-                                });
-                        });
-                    });
+                $("#midtbyen").click(function(){
+                    fakeReserver("Midtbyen");
+                });
+                             
+                $("#kalvskinnet").click(function(){
+                    fakeReserver("Kalvskinnet");
                 });
                 
                 $("#registrerSykkel").click(function(){
@@ -149,5 +131,44 @@
                     }
                 });
             }
+            
+            function fakeReserver(plassering){
+                $("#bestillingTable").DataTable().row.add(
+                        {
+                            "dato" : "14:15",
+                            "tid" : "23.10",
+                            "kode" : "123"
+                        }
+                        ).draw();
+            }
+            
+            function reserver(plassering){
+                    brukerNavn = "espen";                    
+                    $.get("rest/sykkelService/kunder/" + brukerNavn, function(data){            
+                            kunde = data;
+                            var sykkel;
+                            $.get("rest/sykkelService/sykler/" + plassering, function(data){
+                                sykkel = data;
+                                
+                                $.ajax({
+                                    url: 'rest/sykkelService/kunder/' + kunde.brukerNavn,
+                                    type: 'POST',
+                                    data: JSON.stringify(sykkel),
+                                    contentType: 'application/json',
+                                    dataType: 'json',
+                                    success: function(){
+                                        $.ajax({
+                                             url: 'rest/sykkelService/sykler/' + sykkel.nr + '/reserver',
+                                            type: 'POST',
+                                            success: function(){
+                                                $('#sykkelTable').DataTable().ajax.reload();
+                                                $('#bestillingTable').DataTable().ajax.reload();
+                                            }
+                                        });
+                                    }
+                                });
+                        });
+                    });
+                }
             
             
